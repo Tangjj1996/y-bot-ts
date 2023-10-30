@@ -1,5 +1,6 @@
 import { WechatyBuilder } from "wechaty";
 import QRCode from "qrcode";
+import { handleMessage } from "./message.js";
 
 const bot = WechatyBuilder.build({
   name: "wechat-assistant", // generate xxxx.memory-card.json and save login data for the next login
@@ -21,5 +22,5 @@ bot
     );
   })
   .on("login", (user) => console.log(`User ${user} logged in`))
-  .on("message", (message) => console.log(`Message: ${message.text()}`));
+  .on("message", handleMessage);
 await bot.start();
