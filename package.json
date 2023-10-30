@@ -2,20 +2,22 @@
   "name": "y-bot-ts",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsx src/app.ts",
     "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/qrcode": "^1.5.4",
     "eslint": "^8.52.0",
     "eslint-config-unjs": "^0.2.1",
     "husky": "^8.0.3",
     "lint-staged": "^15.0.2",
     "prettier": "^3.0.3",
+    "tsx": "^3.14.0",
     "typescript": "^5.2.2"
   },
   "lint-staged": {
@@ -23,5 +25,10 @@
       "eslint . --fix",
       "prettier -c -w"
     ]
+  },
+  "dependencies": {
+    "qrcode": "^1.5.3",
+    "wechaty": "^1.20.2",
+    "wechaty-puppet-wechat": "^1.18.4"
   }
 }
