@@ -1,5 +1,6 @@
 import type { Message } from "wechaty";
-import { time } from "./context";
+import { time } from "./context.js";
+import { decodeText } from "./utils.js";
 
 export const handleMessage = async (message: Message) => {
   if (message.date().getTime() < time.initialzedAt) {
@@ -9,5 +10,5 @@ export const handleMessage = async (message: Message) => {
     await message.say("pong");
     return;
   }
-  console.log("This is the message:::", message.text());
+  console.log("This is the message:::", decodeText(message.text()));
 };

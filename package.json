@@ -12,6 +12,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/qrcode": "^1.5.4",
+    "@types/xml2js": "^0.4.13",
     "eslint": "^8.52.0",
     "eslint-config-unjs": "^0.2.1",
     "husky": "^8.0.3",
@@ -29,6 +30,7 @@
   "dependencies": {
     "qrcode": "^1.5.3",
     "wechaty": "^1.20.2",
-    "wechaty-puppet-wechat": "^1.18.4"
+    "wechaty-puppet-wechat": "^1.18.4",
+    "xml2js": "^0.6.2"
   }
 }
