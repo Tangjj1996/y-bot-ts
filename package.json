@@ -5,12 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "tsx src/app.ts",
+    "test": "vitest",
     "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^20.8.9",
     "@types/qrcode": "^1.5.4",
     "@types/xml2js": "^0.4.13",
     "eslint": "^8.52.0",
@@ -19,7 +21,8 @@
     "lint-staged": "^15.0.2",
     "prettier": "^3.0.3",
     "tsx": "^3.14.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.6"
   },
   "lint-staged": {
     "*.{ts,js}": [
