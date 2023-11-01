@@ -27,10 +27,10 @@ export const isNil = (data: any) => {
   return data == undefined;
 };
 
-const dfsResult = (record: any, temp: any[] = []) => {
+const dfsResult = (record: any, temp: any[] = [], ref: any[] = []) => {
   if (Array.isArray(record)) {
     for (const item of record) {
-      dfsResult(item, temp);
+      dfsResult(item, temp, ref);
     }
   }
   if (typeof record === "object" && record !== null) {
@@ -38,6 +38,10 @@ const dfsResult = (record: any, temp: any[] = []) => {
       return temp;
     }
     if (!isNil(record.title) && !isNil(record.url) && !isNil(record.pub_time)) {
+      if (ref.includes(record)) {
+        return temp;
+      }
+      ref.push(record);
       temp.push({
         title: record.title[0],
         url: record.url[0],
@@ -45,7 +49,7 @@ const dfsResult = (record: any, temp: any[] = []) => {
       });
     }
     for (const key in record) {
-      dfsResult(record[key], temp);
+      dfsResult(record[key], temp, ref);
     }
   }
   return temp;
