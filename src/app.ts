@@ -21,6 +21,8 @@ bot
       await QRCode.toString(qrcode, { type: "terminal", small: true }),
     );
   })
-  .on("login", (user) => console.log(`User ${user} logged in`))
+  .on("login", (user) => {
+    console.log(`User ${user} logged in`);
+  })
   .on("message", handleMessage);
 await bot.start();

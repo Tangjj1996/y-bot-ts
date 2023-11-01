@@ -1,6 +1,7 @@
 import type { Message } from "wechaty";
 import { time } from "./context.js";
-import { decodeText } from "./utils.js";
+import { decodeText, isXmlMessage, parseXML } from "./utils.js";
+import { handleXMLMsg } from "./handle.js";
 
 export const handleMessage = async (message: Message) => {
   if (message.date().getTime() < time.initialzedAt) {
@@ -10,5 +11,8 @@ export const handleMessage = async (message: Message) => {
     await message.say("pong");
     return;
   }
-  console.log("This is the message:::", decodeText(message.text()));
+  const msgText = decodeText(message.text());
+  if (isXmlMessage(msgText)) {
+    await handleXMLMsg(await parseXML(msgText));
+  }
 };
