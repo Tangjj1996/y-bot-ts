@@ -24,5 +24,5 @@ bot
   .on("login", (user) => {
     console.log(`User ${user} logged in`);
   })
-  .on("message", handleMessage);
+  .on("message", (msg) => handleMessage(msg, bot));
 await bot.start();
