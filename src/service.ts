@@ -1,4 +1,6 @@
+import mongoose from "mongoose";
 import { XMLMessage } from "./utils";
+import config from "./config";
 
 interface MongoDBOperationOptions {}
 
@@ -6,20 +8,29 @@ interface MongoDBOperationOptions {}
  * 保存到数据库中
  */
 export class MongoDBOperation {
+  mongoosePromise: Promise<typeof mongoose>;
+
   constructor(option: MongoDBOperationOptions) {
-    console.log("This is option:", option);
+    const { mongodb_url } = config;
+    this.mongoosePromise = mongoose.connect(mongodb_url);
   }
 
   async create(msg: XMLMessage[]) {
-    console.log("You have successfully create", msg);
-    await Promise.resolve(msg);
+    await this.mongoosePromise;
+    console.log("MongoDBOperation msg::", msg);
   }
 
-  async retrieve() {}
+  async retrieve() {
+    await this.mongoosePromise;
+  }
 
-  async update() {}
+  async update() {
+    await this.mongoosePromise;
+  }
 
-  async delete() {}
+  async delete() {
+    await this.mongoosePromise;
+  }
 }
 
 export const mongoDBOperationInstance = new MongoDBOperation({});

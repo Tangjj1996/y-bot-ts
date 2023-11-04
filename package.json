@@ -31,6 +31,8 @@
     ]
   },
   "dependencies": {
+    "dotenv": "^16.3.1",
+    "mongoose": "^8.0.0",
     "qrcode": "^1.5.3",
     "wechaty": "^1.20.2",
     "wechaty-puppet-wechat": "^1.18.4",
