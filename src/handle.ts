@@ -1,4 +1,4 @@
-import { mongoDBOperationInstance } from "./service";
+import { createData } from "./service";
 import type { XMLMessage } from "./utils";
 
 /**
@@ -6,5 +6,5 @@ import type { XMLMessage } from "./utils";
  * @param msg
  */
 export const handleXMLMsg = async (msg: XMLMessage[]) => {
-  await mongoDBOperationInstance.create(msg);
+  await createData(msg);
 };

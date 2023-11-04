@@ -1,35 +1,20 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import { XMLMessage } from "./utils";
 import config from "./config";
+import { DOC_NAME } from "./contance";
 
-interface MongoDBOperationOptions {}
+await mongoose.connect(config.mongodb_url);
+const BotModel = mongoose.model(
+  DOC_NAME,
+  new Schema({ title: String, url: String, pub_time: Number }),
+);
 
-/**
- * 保存到数据库中
- */
-export class MongoDBOperation {
-  mongoosePromise: Promise<typeof mongoose>;
+export const createData = async (msg: XMLMessage[]) => {
+  await BotModel.insertMany(msg);
+};
 
-  constructor(option: MongoDBOperationOptions) {
-    const { mongodb_url } = config;
-    this.mongoosePromise = mongoose.connect(mongodb_url);
-  }
+export const retriveData = () => {};
 
-  async create(msg: XMLMessage[]) {
-    await this.mongoosePromise;
-  }
+export const updateData = () => {};
 
-  async retrieve() {
-    await this.mongoosePromise;
-  }
-
-  async update() {
-    await this.mongoosePromise;
-  }
-
-  async delete() {
-    await this.mongoosePromise;
-  }
-}
-
-export const mongoDBOperationInstance = new MongoDBOperation({});
+export const deleteData = () => {};
