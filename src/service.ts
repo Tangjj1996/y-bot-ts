@@ -18,6 +18,14 @@ export class MongoDBOperation {
   async create(msg: XMLMessage[]) {
     await this.mongoosePromise;
     console.log("MongoDBOperation msg::", msg);
+    const kittySchema = new mongoose.Schema({
+      name: String,
+    });
+    const Kitten = mongoose.model("Kitten", kittySchema);
+    const silence = new Kitten({ name: "Silence" });
+    console.log(silence.name);
+    await silence.save();
+    console.log(await Kitten.find(), "++++");
   }
 
   async retrieve() {
